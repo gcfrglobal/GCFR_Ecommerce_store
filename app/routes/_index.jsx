@@ -80,13 +80,12 @@ export default function Homepage() {
       </div>
 
       {/* Featured Products */}
-      <div className='z-10 relative py-10  px-16'>
+      <div className='z-10 relative py-10 px-16'>
         <FeaturedCollection collections={data.featuredCollection} />
       </div>
 
-      <div className='z-10 relative py-10  px-16'>
+      <div className='z-10 relative py-10 px-16'>
         <RecommendedProducts products={data.recommendedProducts} />
-
       </div>
       
       {/* <div className='divide-y border'></div> */}
@@ -117,7 +116,7 @@ function FeaturedCollection({collections}) {
                     <Link to={`/collections/${coll.handle}`} key={coll.id}>
                       {image && (
                         <div className="featured-collection-image">
-                          <Image data={image} sizes='50vw' className='w-24 h-auto border border-amber-600' />
+                          <Image data={image} sizes='50vw' className='w-24 h-auto border border-amber-300' />
                         </div>
                       )}
                       <h1>{collection.title}</h1>

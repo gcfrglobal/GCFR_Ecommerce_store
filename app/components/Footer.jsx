@@ -9,7 +9,8 @@ export function Footer({footer: footerPromise, header, publicStoreDomain}) {
     <Suspense>
       <Await resolve={footerPromise}>
         {(footer) => (
-          <footer className="footer flex flex-row lg:px-24 sm:px-12 px-20">
+          <footer className="">
+            {/* footer flex flex-row lg:px-24 sm:px-12 px-20 text-white */}
             {footer?.menu && header.shop.primaryDomain?.url && (
               <FooterMenu
                 menu={footer.menu}
@@ -17,6 +18,13 @@ export function Footer({footer: footerPromise, header, publicStoreDomain}) {
                 publicStoreDomain={publicStoreDomain}
               />
             )}
+            <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+            <df-messenger
+              intent="WELCOME"
+              chat-title="GCFR_FAQ"
+              agent-id="90c19923-e6c5-4ac0-94f9-6a24f64f0502"
+              language-code="en"
+            ></df-messenger>
           </footer>
         )}
       </Await>

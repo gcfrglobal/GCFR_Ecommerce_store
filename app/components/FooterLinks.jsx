@@ -3,37 +3,51 @@ import React from 'react';
 export default function FooterLinks() {
   return (
     <div>
-      <div className="divide-y border"></div>
-      <div className="lg:pt-16 lg:px-16 sm:px-12 px-20 lg:py-8 sm:py-12 py-8 bg-white bg-cover bg-no-repeat bg-center">
+      <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+      <df-messenger
+        intent="WELCOME"
+        chat-title="GCFR_FAQ"
+        agent-id="90c19923-e6c5-4ac0-94f9-6a24f64f0502"
+        language-code="en"
+      ></df-messenger>
+      <div className="divide-y border border-gray-100"></div>
+      <div className="lg:pt-16 lg:px-16 sm:px-12 px-12 lg:py-8 sm:py-12 py-8 flex flex-col items-center">
+        <div className='flex flex-col justify-center items-center mb-20 w-[50%]'>
+          <div className="mb-10 text-center">
+            <h1 className='text-3xl mb-0'>Newsletter</h1>
+            <p className="text-sm">
+              Get timely updates on launches and promotions.
+            </p>
+          </div>
+          <div className="flex flex-row gap-6 justify-between items-stretch w-full m-0">
+            <input
+              type="email"
+              placeholder="email address"
+              className="minor w-full outline-none outline-0 bg-white border-b-2 border-black rounded-lg py-3 pl-4 mb-0 mt-0"
+            />
+            <button className="bg-black px-12 border-black rounded-md cursor-pointer text-white flex gap-2 items-center justify-center">Send
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                strokeWidth={1.5}
+                stroke="currentColor"
+                className="w-6 h-6 text-white"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+
         <div className="lg:grid lg:grid-cols-6 sm:flex sm:flex-row sm:flex-wrap lg:gap-6 sm:gap-12">
           <div className="col-span-3 text-left text-black flex flex-col items-start justify-start pr-24">
-            <h1 className="font-bold text-2xl mb-3 mt-0">Golden Choice Fashion Resort</h1>
-            <p className="text-sm mb-3">
-              Enter your email to receive updates on launches and promotions. NO spam, we promise.
-            </p>
-            <div className="flex flex-row justify-between outline-0 bg-white border border-black rounded-lg w-full">
-              <input
-                type="email"
-                placeholder="email address"
-                className="minor w-full text-gray-800 outline-none placeholder-none border-none contrast-more:border-none contrast-more:placeholder-none py-1"
-              />
-              <button className="bg-black px-6 border-black rounded-r-md">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={1.5}
-                  stroke="currentColor"
-                  className="w-6 h-6 text-white"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3"
-                  />
-                </svg>
-              </button>
-            </div>
+            {/* <h1 className="font-bold text-2xl mb-3 mt-0">Golden Choice Fashion Resort</h1> */}
+            
           </div>
 
           {/* LINKS */}

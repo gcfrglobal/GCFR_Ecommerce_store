@@ -53,20 +53,24 @@ export default function Collections() {
   const {collections} = useLoaderData();
 
   return (
-    <div className="collections">
-      <h1>Collections</h1>
-      <PaginatedResourceSection
-        connection={collections}
-        resourcesClassName="collections-grid"
-      >
-        {({node: collection, index}) => (
-          <CollectionItem
-            key={collection.id}
-            collection={collection}
-            index={index}
-          />
-        )}
-      </PaginatedResourceSection>
+    <div className="">
+      <div className="collections px-16 pt-48">
+        <div className='border-b border-b-amber-300 mb-12'>
+          <h1 className='text-4xl font-semibold'>Collections</h1>
+        </div>
+        <PaginatedResourceSection
+          connection={collections}
+          resourcesClassName="collections-grid"
+        >
+          {({node: collection, index}) => (
+            <CollectionItem
+              key={collection.id}
+              collection={collection}
+              index={index}
+            />
+          )}
+        </PaginatedResourceSection>
+      </div>
     </div>
   );
 }
@@ -93,7 +97,7 @@ function CollectionItem({collection, index}) {
           loading={index < 3 ? 'eager' : undefined}
         />
       )}
-      <h5>{collection.title}</h5>
+      <h5 className='mt-3 text-lg'>{collection.title}</h5>
     </Link>
   );
 }
