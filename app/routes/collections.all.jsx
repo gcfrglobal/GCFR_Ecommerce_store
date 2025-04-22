@@ -62,8 +62,10 @@ export default function Collection() {
 
   return (
     <div>
-      <div className="collection">
-        <h1>Products</h1>
+      <div className="collection pt-48 px-16">
+        <div className='border-b border-b-amber-300 mb-12'>
+          <h1 className='font-semibold text-4xl'>Catalog</h1>
+        </div>
         <PaginatedResourceSection
           connection={products}
           resourcesClassName="products-grid"
@@ -108,8 +110,8 @@ function ProductItem({product, loading}) {
           sizes="(min-width: 45em) 400px, 100vw"
         />
       )}
-      <h4>{product.title}</h4>
-      <small>
+      <h4 className='mt-4 text-xl'>{product.title}</h4>
+      <small className='text-md'>
         <Money data={product.priceRange.minVariantPrice} />
       </small>
     </Link>
@@ -140,7 +142,7 @@ const PRODUCT_ITEM_FRAGMENT = `#graphql
         ...MoneyProductItem
       }
     }
-    variants(first: 1) {
+    variants(first: 2) {
       nodes {
         selectedOptions {
           name
