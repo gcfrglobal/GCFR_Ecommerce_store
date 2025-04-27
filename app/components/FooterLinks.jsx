@@ -3,13 +3,6 @@ import React from 'react';
 export default function FooterLinks() {
   return (
     <div>
-      <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
-      <df-messenger
-        intent="WELCOME"
-        chat-title="GCFR_FAQ"
-        agent-id="90c19923-e6c5-4ac0-94f9-6a24f64f0502"
-        language-code="en"
-      ></df-messenger>
       <div className="divide-y border border-gray-100"></div>
       <div className="lg:pt-16 lg:px-16 sm:px-12 px-12 lg:py-8 sm:py-12 py-8 flex flex-col items-center">
         <div className='flex flex-col justify-center items-center mb-20 w-[50%]'>
@@ -116,28 +109,6 @@ export default function FooterLinks() {
             </div>
           </div>
 
-          {/* SUPPORT */}
-          <div className="flex flex-col lg:items-center sm:items-start justify-start mt-0">
-            <div className="text-left text-black border-black border-l mt-0">
-              <div className="ml-4">
-                <h1 className="font-bold text-xl mb-3 mt-0">Support</h1>
-                <ul className="flex flex-col text-sm">
-                  <li>
-                    <p className="text-sm hover:font-bold">Corporate Gifting</p>
-                  </li>
-                  <li>
-                    <p className="text-sm hover:font-bold">Manage Order</p>
-                  </li>
-                  <li>
-                    <p className="text-sm hover:font-bold">Refer a Friend</p>
-                  </li>
-                  <li>
-                    <p className="text-sm hover:font-bold">Support</p>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>

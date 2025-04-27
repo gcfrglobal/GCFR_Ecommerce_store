@@ -12,20 +12,20 @@ export const sliderContent = [
     {
         title: 'Luxury Redefined',
         slug: 'Step into a world of timeless elegance. Our collection of handcrafted suits combines classic craftsmanship with modern design to make you look and feel your best for every occasion.',
-        image: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/fashion-peach.jpg',
+        image: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/fashion-peach.jpg?v=1726229256',
         images: [
             {
-                img1: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/fashion-peach.jpg'
+                img1: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/fashion-peach.jpg?v=1726229256'
             }
         ]
     },
     {
         title: 'Tailored to Perfection',
         slug: 'Experience the art of bespoke tailoring. Each suit is meticulously crafted to your exact measurements, ensuring a flawless fit that enhances your style and confidence.',
-        image: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/Suit_Men_And_Women2.jpg',
+        image: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/Suit_Men_And_Women2.jpg?v=1726230205',
         images: [
             {
-                img1: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/Suit_Men_And_Women2.jpg'
+                img1: 'https://cdn.shopify.com/s/files/1/0893/4555/6809/files/Suit_Men_And_Women2.jpg?v=1726230205'
             }
         ]
     },

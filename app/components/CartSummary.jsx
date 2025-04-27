@@ -9,9 +9,9 @@ export function CartSummary({cart, layout}) {
 
   return (
     <div aria-labelledby="cart-summary" className={className}>
-      <h4>Totals</h4>
+      <h4>Totals &nbsp;</h4>
       <dl className="cart-subtotal">
-        <dt>Subtotal</dt>
+        <dt>Subtotal: &nbsp;</dt>
         <dd>
           {cart.cost?.subtotalAmount?.amount ? (
             <Money data={cart.cost?.subtotalAmount} />
@@ -32,9 +32,9 @@ function CartCheckoutActions({checkoutUrl}) {
   if (!checkoutUrl) return null;
 
   return (
-    <div>
-      <a href={checkoutUrl} target="_self">
-        <p>Continue to Checkout &rarr;</p>
+    <div className="flex items-start justify-start">
+      <a href={checkoutUrl} target="_self" className="px-4 py-4 bg-amber-400 rounded-xl hover:bg-white border-2 border-amber-400">
+        <p className="">Continue to Checkout &rarr;</p>
       </a>
       <br />
     </div>
