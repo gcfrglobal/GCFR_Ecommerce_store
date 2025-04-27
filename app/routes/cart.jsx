@@ -88,8 +88,8 @@ export default function Cart() {
   if (!rootData) return null;
 
   return (
-    <div className="cart">
-      <h1>Cart</h1>
+    <div className="cart mt-48 px-16 ">
+      <h1 className="text-4xl">Cart</h1>
       <Suspense fallback={<p>Loading cart ...</p>}>
         <Await
           resolve={rootData.cart}

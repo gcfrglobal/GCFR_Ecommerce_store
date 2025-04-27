@@ -1,3 +1,5 @@
+import {useState, useEffect} from 'react';
+// import {useShopQuery, gql} from '@shopify/hydrogen';
 import {defer} from '@shopify/remix-oxygen';
 import {Await, useLoaderData, Link} from '@remix-run/react';
 import {Suspense} from 'react';
@@ -71,7 +73,6 @@ export default function Homepage() {
   /** @type {LoaderReturnData} */
   const data = useLoaderData();
 
-
   return (
     <div className=''>
       {/* Slider */}
@@ -87,8 +88,11 @@ export default function Homepage() {
       <div className='z-10 relative py-10 px-16'>
         <RecommendedProducts products={data.recommendedProducts} />
       </div>
+
+      <div className='z-10 relative py-10 px-16'>
+      <TabComponent products={data.recommendedProducts} />
+      </div>
       
-      {/* <div className='divide-y border'></div> */}
       <div className='z-10 relative'>
         <FooterLinks/>
         <Footer />
@@ -96,6 +100,128 @@ export default function Homepage() {
     </div>
   );
 }
+
+function TabComponent({products}) {
+  let index = 0
+  const tabs = [
+    'All Products',
+    'Perfect Groom',
+    'Gentleman',
+    'Modern Man',
+  ];
+
+  const tabMessages = {
+    'All Products': 'Browse our full range of exclusive fashion pieces.',
+    'Perfect Groom': 'Find premium shirts for every occasion.',
+    'Gentleman': 'Traditional elegance meets modern style in our Kaftans.',
+    'Modern Man': 'Step out in regal style with our Agbada collections.',
+  };
+  
+  const [activeTab, setActiveTab] = useState(tabs[index]);
+  
+
+  // Dummy logic for category matching — assumes product.title or tags contain category keywords
+  const filteredProducts = products?.products?.nodes.filter((product) => {
+    if (activeTab === tabs[index]) return true;
+    return (
+      product.title.toLowerCase().includes(activeTab.toLowerCase()) ||
+      product.tags?.some(tag => tag.toLowerCase().includes(activeTab.toLowerCase()))
+    );
+  });
+  console.log('Active tab:', activeTab);
+
+  return (
+    <div>
+      <h2 className='text-black text-center lg:pt-24 sm:pt-12 font-semibold lg:text-5xl text-5xl lg:mb-8 sm:mb-2'>Smart Collections For You</h2>
+      <p className='uppercase text-gray-400 text-md text-center'>Browse our full range of exclusive fashion pieces.</p>
+      <div className="flex flex-wrap justify-center gap-4 mb-8 mt-12">
+        {tabs.map((tab) => (
+          <button
+            key={tab}
+            className={`px-6 py-2 rounded-full border transition-all duration-300 text-sm md:text-base font-medium ${
+              activeTab === tab
+                ? 'bg-black text-white border-black'
+                : 'bg-white text-black border-gray-300 hover:border-black'
+            }`}
+            onClick={() => setActiveTab(tab)}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+
+      <div className="text-center text-xl font-semibold mb-6">
+        {tabMessages[activeTab]}
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {filteredProducts?.map((product) => (
+          <Link key={product.id} to={`/products/${product.handle}`} className="text-center">
+            <Image
+              data={product.images.nodes[0]}
+              aspectRatio="1/1"
+              sizes="50vw"
+              className="rounded-lg border"
+            />
+            <h4 className="mt-2 font-medium">{product.title}</h4>
+            <small className="text-gray-600">
+              <Money data={product.priceRange.minVariantPrice} />
+            </small>
+          </Link>
+        ))}
+      </div>
+    </div>
+  );
+}
+
+
+// function TabComponent({products}) {
+//   const tabs = [
+//     'All Products',
+//     'Shirts',
+//     'Suits',
+//     'Kaftan',
+//     'Agbada',
+//     'Pant Trousers',
+//   ];
+
+//   const tabMessages = {
+//     'All Products': 'Browse our full range of exclusive fashion pieces.',
+//     'Shirts': 'Find premium shirts for every occasion.',
+//     'Suits': 'Explore our tailored suits for that sharp look.',
+//     'Kaftan': 'Traditional elegance meets modern style in our Kaftans.',
+//     'Agbada': 'Step out in regal style with our Agbada collections.',
+//     'Pant Trousers': 'Comfort meets class in our pant trousers collection.',
+//   };
+  
+//   const [activeTab, setActiveTab] = useState(tabs[1]);
+
+//   return (
+//     <div>
+//       <div className="flex flex-wrap justify-center gap-4 mb-8">
+//         {tabs.map((tab) => (
+//           <button
+//             key={tab}
+//             className={`px-6 py-2 rounded-full border transition-all duration-300 text-sm md:text-base font-medium ${
+//               activeTab === tab
+//                 ? 'bg-black text-white border-black'
+//                 : 'bg-white text-black border-gray-300 hover:border-black'
+//             }`}
+//             onClick={() => setActiveTab(tab)}
+//           >
+//             {tab}
+//           </button>
+//         ))}
+//       </div>
+
+//       <div className="text-center text-xl font-semibold">
+//         {tabMessages[activeTab]}
+//       </div>
+
+
+//     </div>
+//   )
+// }
 
 /**
  * @param {{
@@ -107,13 +233,13 @@ function FeaturedCollection({collections}) {
   const image = collections?.image;
   return (
     <div className='flex justify-between items-start gap-12'>
-      {/* <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={collections}>
         {(response) => (
             <div className="recommended-products-grid">
               {response
                 ? response.collections.nodes.map((coll) => (
-                    <Link to={`/collections/${coll.handle}`} key={coll.id}>
+                    <Link to={`/collections/${collection.handle}`} key={collection.id}>
                       {image && (
                         <div className="featured-collection-image">
                           <Image data={image} sizes='50vw' className='w-24 h-auto border border-amber-300' />
@@ -126,9 +252,9 @@ function FeaturedCollection({collections}) {
             </div>
           )}
         </Await>
-      </Suspense> */}
+      </Suspense>
       <Link
-        className={`bg-{} featured-collection w-64`}
+        className={`featured-collection w-64`}
         to={`/collections/${collections.handle}`}
       >
         {image && (
@@ -150,7 +276,7 @@ function FeaturedCollection({collections}) {
 function RecommendedProducts({products}) {
   return (
     <div className="recommended-products lg:pb-32 sm:pb-24 z-0">
-      <h2 className='dark:text-white text-black text-center lg:pt-24 sm:pt-12 font-bold lg:text-5xl text-5xl lg:mb-4 sm:mb-2'>Recommended Products</h2>
+      <h2 className='text-black text-center lg:pt-24 sm:pt-12 font-semibold lg:text-5xl text-5xl lg:mb-4 sm:mb-2'>Recommended Products</h2>
       <p className='uppercase text-gray-400 text-lg text-center'>Carefully Chosen For You</p>
       <Suspense fallback={<div>Loading...</div>}>
         <Await resolve={products}>
@@ -166,12 +292,14 @@ function RecommendedProducts({products}) {
                       <Image
                         data={product.images.nodes[0]}
                         aspectRatio="1/1"
-                        sizes="(min-width: 45em) 20vw, 50vw"
+                        sizes="50vw"
                       />
-                      <h4>{product.title}</h4>
-                      <small>
-                        <Money data={product.priceRange.minVariantPrice} />
-                      </small>
+                      <div className='flex flex-col gap-1 mt-4'>
+                        <h4 className='font-normal text-md'>{product.title}</h4>
+                        <h4 className='font-medium text-lg'>
+                          <Money data={product.priceRange.minVariantPrice} />
+                        </h4>
+                      </div>
                     </Link>
                   ))
                 : null}
@@ -237,6 +365,8 @@ const RECOMMENDED_PRODUCTS_QUERY = `#graphql
     }
   }
 `;
+
+
 
 /** @typedef {import('@shopify/remix-oxygen').LoaderFunctionArgs} LoaderFunctionArgs */
 /** @template T @typedef {import('@remix-run/react').MetaFunction<T>} MetaFunction */

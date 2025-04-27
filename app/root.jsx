@@ -160,17 +160,7 @@ export function Layout({children}) {
         ) : (
           children
         )}
-        <ScrollRestoration nonce={nonce} />
-        {/* <Scripts nonce={nonce} /> */}
-
-        <Scripts srcDoc='https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1' />
-        {/* <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script> */}
-        <df-messenger
-          intent="WELCOME"
-          chat-title="GCFR_FAQ"
-          agent-id="90c19923-e6c5-4ac0-94f9-6a24f64f0502"
-          language-code="en"
-        ></df-messenger>
+        <ScrollRestoration nonce={nonce} />        
       </body>
     </html>
   );

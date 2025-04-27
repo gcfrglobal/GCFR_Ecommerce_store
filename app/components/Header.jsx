@@ -33,7 +33,7 @@ export function Header({header, isLoggedIn, cart, publicStoreDomain}) {
   });
 
   return (
-    <div className='fixed md:w-[1550px] z-10 max-w-full'>
+    <div className='fixed w-[1550px] z-10 max-w-full'>
       <div className='w-full overflow-hidden bg-black h-[40px]'>
         <div className={`${currentSlide} transition-all duration-1000`}>
           {headerText.map((textSpan, index) => (
